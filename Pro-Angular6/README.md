@@ -17,3 +17,8 @@ Adding Bootstrap package to the application
 
 Starting the development tool    
 `$ ng serve --port 3000 --open`
+
+Angular applications require a module. There are two types of module used in Angular development:
+* _Javascript module_: It is a file that contains JavaScript functionality that is used through the import keyword.  
+* _Angular module_: It is a group of related features.
+Every Angular application has a _root module_.
