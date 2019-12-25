@@ -142,7 +142,7 @@ __NgModule decorator__
 @NgModule({imports, declaration, exports, providers })
 ```
 * _imports_ houses an array of dependencies used by the module
-* _declaration_ list an array of Classes the to be referenced in the module configuration. _declaration_ seems to  used to list the component class.  
+* _declaration_ configures the set of components and other features in the application.
 * _exports_ contains an array of classes from the module that should be made available in other parts of the application.
 * _providers_ tells Angular which classes should be used as services for the dependency injection feature.
 __Pipes__
@@ -150,3 +150,45 @@ __Pipes__
 {{ product.price | currency: "USD":"symbol":"2.2-2" }}
 ```
 Angular includes a feature called _pipes_, which are classes used to transform or prepare a data value for its use in a data binding.
+
+## PART II: Angular in Details  
+
+### Chapter 11: Creating an Angular Project  
+To create a new Angular project  
+`$ ng new example-app`  
+You may use the `--routing` flag to generate a routing module in the project.  
+Learn end-to-end testing using [Protractor](http://protractortest.org)  
+
+To configure the `angular-cli` package to use `yarn` run   
+`$ ng set --global packageManager=yarn`     
+
+To start the development tool  
+`$ ng serve`  
+
+The most common use for linting is to check for potential problems before committing changes to a version control system. Another good practice is toe run your code through the linter after completing a major application feature.
+Running the TypeScript Linter  
+`$ ng lint`  
+
+Tell the linter to ignore the next line using a comment  
+```
+// tslint:disable-next-line
+```  
+
+Disable linting for the entire file by adding this comment to the to of the page:  
+```
+/* tslint:disable */
+```
+
+The development tool must be restarted to reflect the changes made to the `angular.json` file.  
+
+__Creating a Model__  
+The model can be broken into three different parts:  
+* A class that describes the data in the model e.g `product.model.ts`  
+* A data source that loads and saves data, typically to a server e.g `datasource.model.ts`  
+* A repository that allows the data in the model to be manipulated e.g `product.repostory.ts`
+
+
+If a method returns a different object each time it is returned, even if they are different arrays containing the same objects, then Angular will report an error.  
+
+### Chapter 12: Using Data Bindings  
+Data binding expressions should be as simple as possible and rely on components and other Angular features such as pipes to provide complex application logic.  
