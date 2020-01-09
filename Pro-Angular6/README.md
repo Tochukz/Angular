@@ -192,3 +192,70 @@ If a method returns a different object each time it is returned, even if they ar
 
 ### Chapter 12: Using Data Bindings  
 Data binding expressions should be as simple as possible and rely on components and other Angular features such as pipes to provide complex application logic.  
+
+__One-Way Data Bindings__  
+Example:  
+```
+<div [ngClass]="getClasses()">Hello World</div>
+```
+One way data binding wraps square bracket over the target. The value could be a JavaScript expression, a property or method of the template's component class.  If the value is an expression it should be as simple as possible and, ideally, used only to retrieve data from the component and format it for display.   
+There are two different types of target: a _directive_ or a _property_. The target in the example above is a directive.  
+If you omit the brackets and the target is a directive the expression won't be evaluated but will be passed to the directive as a literal value.  
+
+__The Basic Built-in Angular Directives__  
+* ngClass
+* ngStyle  
+* ngIf  
+* ngFor  
+* ngSwitch ngSwitchCase ngSwitchDefault
+* ngTemplateOutlet
+
+__The Angular Property Bindings__  
+* [property]
+* [attr.name]
+* [class.name]  
+* [style.name]  
+
+__The Angular Brackets__  
+* `[target]="expr"`   : One-way data binding. Data flows from the expression to the target.  
+* `{{expression}}`    : String interpolation binding.  
+* `(target)="expr"`   : One-way binding. Data flows from the target to the destination specified by the expression. It is used to handle events.  
+* `[(target)]="expr"` : Also known as the _banana-in-a-box_. A two way binding. Data flows in both directions between the target and the destination specified by the expression.  
+
+__Using the Standard Property Binding__  
+If the target of a binding doesn't match a directive, Angular will try to apply a property binding.   
+The standard property binding lets you set the value of a property for the object that represents the host element, using the result of an expression.  
+```
+<input class="form-control" [value]="model.getProduct(1)?.name || 'None'" />
+```
+
+[HTML element DOM](developer.mozilla.org/en-US/docs/Web/API)  
+
+The `textContent` property is used to set the content of HTML elements  
+```
+<div [textContent]="'ProductName'"></div>
+```
+
+Not all HTML element attributes have equivalent properties in the DOM API. For these situations, Angular provides the _attribute binding_ which is used to set an attribute on the host element rather than setting the value of the JavaScript object that represents it in the DOM.  
+```
+<td [attr.colspan]="productRepository.getProducts().length"]> </td>
+```
+__The Angular Class Bindings__  
+* `[class]="expr"`: The standard property binding evaluates the expression and replaces any exiting class with the result.  
+* `[class.myClass]="expr"`: The special class binding evaluates the Boolean expression and adds `myClass` to the HTML element if true. We can have multiple special class binding defined on a host element.
+* `[ngClass]="[string|array|object]"`: The ngClass directive sets multiple classes using a string of multiple classes, an array of class elements or an object with key of classes and Boolean values.  
+
+__The Angular Style Bindings__  
+* `[style.myStyle]="expr"`: The standard property binding is used to set a single style property to the result of the expression.  
+* `[style.myStyle.unit]="expre"`: The special style binding allows the units for the style value to be specified in the binding target.  
+* `[ngStyle]="map"`: The ngStyle directive sets multiple style properties using the data in a map object.  
+
+__Caution__ Do not try to use the standard property binding to target the style property to set multiple style values. Some browsers will ignore this and allow changes to be made, but the results are unpredictable and cannot be relied on. If you want to set multiple style properties, then create a binding for each of them or use the _ngStyle_ directive.
+
+Standard property binding example:    
+`[style.fontSize]="fontSizeWithUnit"`  
+You can specify style properties using the JavaScript property name format `[style.fontSize]` or using the CSS property format `[style.font-size]`  
+If expressions of bindings are re-evaluated when the data they depend on changes.  
+
+Special property binding example:  
+`[style.fontSize.px]="fontSizeWithoutUnit"`  
