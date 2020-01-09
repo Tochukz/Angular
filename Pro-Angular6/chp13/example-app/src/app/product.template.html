@@ -1,0 +1,127 @@
+<div class="text-white m-2">
+    <div  class="bg-info p-2">
+        There are {{ getProductCount() }} products.
+    </div>
+    <!--Using the ngFor directive and index value-->
+    <table class="table table-sm table-bordered mt-1 text-dark">
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let item of getProducts(); let i = index">
+            <th>{{ i + 1 }}</th>
+            <td>{{ item.name }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.price }}</td>
+        </tr>   
+    </table>
+    <!--Using the ngFor directive, odd and even value-->
+    <table class="table table-sm table-bordered mt-1 text-dark">
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let item of getProducts(); let odd = odd" [class.bg-primary]="odd" [class.bg-info]="!odd">
+            <td>{{ item.name }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.price }}</td>
+        </tr>
+    </table>
+   <!--Using the first and last values-->
+   <table class="table table-sm table-bordered mt-1">
+       <tr class="text-black bg-danger">
+           <th>Name</th>
+           <th>Category</th>
+           <th>Price</th>
+       </tr>
+       <tr *ngFor="let item of getProducts(); let first = first; let last = last; trackBy:getKey" [class.bg-success]="!first" [class.bg-dark]="first || last">
+           <td>{{ item.name }}</td>
+           <td>{{ item.category }}</td>
+           <td *ngIf="!last">{{ item.price }}</td>
+       </tr>
+   </table>
+</div>
+
+<!--Using the ngIf directive-->
+<div *ngIf="getProductCount() > 4" class="bg-info p-2 mt-1">
+    There are more than 4 products in the model
+</div>
+
+<div *ngIf="getProductByPosition(0).name != 'Kayak'" class="bg-info p-2 mt-1">
+    The first product isn't a Kayak
+</div>
+
+<div hidden>
+  Testing the hidden native HTML attribute.
+</div>
+
+<!--Using the ngSwitch directive-->
+<div class="bg-info p-2 mt-1" [ngSwitch]="getProductCount()">
+  <span *ngSwitchCase="2">There are two products</span>
+  <span *ngSwitchCase="5">There are five products</span>
+  <span *ngSwitchDefault>This is the default</span>
+</div> 
+
+<!--using ngSwitchCase directive with literal values-->
+<div class="bg-info p-2 mt-1" [ngSwitch]="getProduct(1).name">
+  <span *ngSwitchCase="targetName">Kayak</span>
+  <span *ngSwitchCase="'Lifejacket'">Lifejacket</span>
+  <span *ngSwitchDefault>Other Product</span>
+</div>
+
+<!--Using the ngTemplateOutlet directive to repeat a block of content at specific locations -->
+<ng-template #bookTitle>
+  <h4 class="p-2 bg-success text-white">Pro Angular 6 by Adam Freeman</h4>
+</ng-template>
+
+<div>
+  <h2>First use of the #bookTitle ngTemplateOutlet</h2>
+  <ng-template [ngTemplateOutlet]="bookTitle"></ng-template>
+</div>
+
+<div>
+    <h3>A repeat use of the #bookTitle ngTemplateOutlet</h3>
+    <ng-template [ngTemplateOutlet]="bookTitle"></ng-template>
+</div>
+
+<!--Providing Context data in ngTemplateOutlet-->
+<ng-template #computerMake let-compMake="makeName">
+    <h3 class="p-2 bg-warning text-white">The computer make is {{compMake}}</h3>
+</ng-template>
+
+<div> 
+   <h2>ngTemplateOutlet with context 1</h2>
+   <ng-template [ngTemplateOutlet]="computerMake" [ngTemplateOutletContext]="{makeName: 'Dell'}"></ng-template>
+</div>
+
+<div>
+    <h2>ngTemaplteOutlet wit context 2</h2>
+    <ng-template [ngTemplateOutlet]="computerMake" [ngTemplateOutletContext]="{makeName: 'Lenovo'}"></ng-template>
+</div>
+
+<!--binding whose expression increments the counter when evaluated-->
+<div class="bg-info p-2">
+    <!-- This will result in an error because of the assignment operator on the template-->
+    <!-- Counter: {{ counter = counter + 1}} -->
+</div> 
+
+<div class="bg-info p-2 text-white">
+    <!-- This will result in ExpressionChangedAfterItHasBeenCheckedError. 
+         The attempt to change the application data in the data binding produces this error as will be seen in the JavaScript console.-->
+    <!--Next Product is {{ nextProduct.name }}-->
+</div>
+
+<div class="bg-info p-2">
+    <!-- This will result in a error saying "Cannot read proprty 'floor' of undefined
+         Classes in the global namespace such as console or Math is not accessabel in the template
+         Angular has tried to evaluate the expression using the component as the context and failed to find a Math property
+         If you want to access functionality in the global namespace, then it must be provided by the component.-->
+    <!--The rounded price {{ Math.floor(getProduct(1).price) }}-->
+</div>
+
+<div class="bg-info p-2 text-white">
+    The rounded price is {{ getProductPrice(1) }}
+</div>

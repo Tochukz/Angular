@@ -259,3 +259,76 @@ If expressions of bindings are re-evaluated when the data they depend on changes
 
 Special property binding example:  
 `[style.fontSize.px]="fontSizeWithoutUnit"`  
+
+### Chapter 13: Using the Built-in Directives  
+To prevent template error, avoid modifying the application state as a side effect of a data binding expression.  
+To avoid context error, ensure that data binding expressions use only the properties and methods provided by the template's component.  
+
+__The Built-in Directives__  
+1.
+```
+<div *ngIf="expr"></div>
+```
+ Used to include an element and its content in the HTML document if the expression evaluates to true.   
+The asterisk indicates that this is a micro-template directive.  
+2.
+```
+<div [ngSwitch]="expr">
+  <span= *ngSwitchCase="expr"></span>
+  <span *ngSwitchDefault></span>
+</div>
+```  
+The _ngSwitch_ directive is used to choose between multiple elements to include in the HTML document based on the result of an expression.  
+3.
+```
+<div *ngFor="#item of expr"></div>
+```
+The _ngFor_ directive is used to generate the same set of elements for each object in an array.  
+4.
+```
+<ng-template [ngTemplateOutlet]="myTempl">
+</ng-template>
+```
+The _ngTemplateOutlet_ directive is used to repeat a block of content in a template.  
+5.  
+```
+<div ngClass="expr"></div>
+```
+The _ngClass_ directive is used to manage class membership.  
+6.  
+```
+<div ngStyle="expr"><.div>
+```  
+The _ngStyle_ directive is used to manage styles applied directly to elements.  
+
+Directive which are prefixed with asterisk are known as micro-template directives. The asterisk is a shorthand for using directives that rely on content provided as part of the template, known as a micro-template. Directives that use micro-templates are known as _structural directives._
+
+This
+```
+<ng-template ngIf="expr">
+  <div>Hello People</div>
+</ng-template>
+```
+is the same as this  
+```
+<div *ngIf="expr">
+  Hello People
+</div>
+```
+The later is only a short-hand of the former.  
+
+__The ngFor Local Template Values__  
+* _index_ This number value is assigned to the position of the object.  
+* _odd_ This boolean value returns true if the current object has an odd-numbered position in the data source.  
+* _even_ This boolean value returns true if the current object has an even-numbered position in the data source.  
+* _first_  This boolean value returns true if the current object is the first one in the data source.  
+* _last_ This boolean value returns true if the current object is the last one in the data source.  
+
+__One-Way Data Binding Restrictions__  
+One-way data bonding must be _idemponent_, meaning that they can be evaluate repeatedly without changing the state of the application.  
+Angular will report an error if a data binding expression contains an operator that can b used to perform an assignment such as =, +=, -=, ++, and --.
+
+The attempt to change the application data binding produces an error by Angular.  
+
+__The Expression Context__  
+The expression context means that you can't access objects defined outside the template's component and in particular templates can't access the global namespace.  
