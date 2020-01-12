@@ -332,3 +332,68 @@ The attempt to change the application data binding produces an error by Angular.
 
 __The Expression Context__  
 The expression context means that you can't access objects defined outside the template's component and in particular templates can't access the global namespace.  
+
+### Chapter 14: Using Events and Forms  
+The imports property of the `NgModule` decorator specifies the dependencies of the application.
+
+__Event binding example__
+```
+<td (mouseover)="selectedProduct = item.name">
+```
+The expressions in event bindings are sllowed to make changes to the state of the application and can contain assignment operators such as =.  
+
+Although you can define properties dynamically, a safer approach is to define all the properties that a template uses in  the component.  
+
+__Properties Common to All DOM events Objects__  
+* _type_ returns a string that identifies the type of event that has been triggered.  
+* _target_ returns the object that triggered the event, which will generally be the object that represents the HTML element in the DOM.  
+* _timeStamp_ returns a number that contains the time that the event was triggered, expressed as milliseconds since Jan 1, 1970.  
+
+__Using Template Reference Variables__  
+Template _reference variables_ are a form of template variable that can be used to refer to elements within the template.  
+_Reference variables_ are defined using the `#` character, followed by the variable name.  
+```
+<input #product class="form-control" (input)="false" />
+```
+The _product_ reference variable will be assigned the object that represents the input element in the DOM, that is the `HTMLInputElement` object.  
+
+Angular won't update the data bindings in the template when the user edits the content of the `input` element unless there is an event binding on that element, hence the need for the `(input)="false"` event binding.
+
+Reference variables can be used by other bindings in the same template.  
+```
+<p>select Product: {{ product.value || ' (None)' }}</p>
+```
+This isn't something you will need to do in most real projects. Most data bindings rely on variables defined by the template's component.
+
+__Adding Form Validation__  
+There are four attributes that you can add to input elements, each of which defined a validation rule in Angular:  
+* _required_ This attribute is used to specify a value that must be provided.
+* _minlength_ This attribute us used to specify a minimum number of characters.
+* _maxlength_ This cannot be applied directly to form elements because it conflicts with the HTML5 attribute of the same name.  
+* _pattern_ This attribute is used to specify a regular expression that the value provided by the user must match.  
+These are part of the HTML specification, but Angular build on these properties with some additional features.  
+
+__Angular Form Validation Classes__   
+After adding the validation attribute to an input element, Angular will add one of each pair of the following CSS classes to the input element:  
+* _ng-untouched_ & _ng-touched_: For not visited element & for visited element  
+* _ng-prestine_ & _ng-dirty_: When content have not been changed & when content have been edited.  
+* _ng-valid_ & _ng-invalid_: If content meets validation rules & if not.  
+
+__Validation Object__  
+To assign a template reference variable to a validation object do
+```
+<input #name="ngModel" [(ngModel)]="product.name" ... />
+```
+The properties of the validation object(`ngModel`) includes `path`, `valid`, `invalid`, `pristine`, `dirty`, `touched`, `untouched`, `errors` and `value`.
+The `errors` property is created only when there are validation errors.  
+
+__The Validator Properties__  
+* _Validators.required_  
+* _Validators.minLength_  
+* _Validators.maxLength_
+* _Validators.pattern_  
+Validators and be combined using the _Validators.compose_ method so that several checks are performed on a single element.    
+
+_Types of Form Validations_
+1. Attribute-based form validation.
+2. Model-base form validation
