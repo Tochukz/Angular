@@ -1,0 +1,135 @@
+<style>
+input.ng-dirty.ng-invalid, 
+select.ng-dirty.ng-invalid {
+    border: solid 2px #f00;
+  }
+input.ng-dirty.ng-valid,
+select.ng-dirty.ng-valid {
+  border:solid 2px #6bc502;
+}
+
+</style>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Users List</h3>
+      <table class="table table-sm table-striped">
+        <tr>
+          <th>ID</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>City</th>
+        </tr>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.gender }}</td>
+          <td>{{ user.city }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>{{ newUser.firstname }}</td>
+          <td>{{ newUser.lastname }}</td>
+          <td>{{ newUser.email }}</td>
+          <td>{{ newUser.gender }}</td>
+          <td>{{ newUser.city }}</td>        
+        </tr>
+      </table>
+    </div>
+    <div class="col-sm-3">
+      <h3>Register User</h3>
+      <pre>
+        
+      </pre>
+      <form #form="ngForm" (ngSubmit)="register(form)">
+        <div class="bg-danger text-white p-2" *ngIf="submitted && form.invalid">
+          Registration form has not be filled properly.
+        </div>
+        <div class="form-group">
+          <label for="firstname" class="control-label">Firstname</label>
+          <input type="text" 
+                class="form-control"
+                id="firstname"        
+                name="firstname"  
+                #firstname="ngModel"
+                minlength="2"
+                required
+                pattern="^[A-Za-z ]+$"
+                [(ngModel)]="newUser.firstname" />
+          <ul class="text-danger list-unstyled" *ngIf="(submitted || firstname.dirty) && firstname.invalid">
+            <li *ngIf="firstname.errors.required">Please enter your firstname</li>
+            <li *ngIf="firstname.errors.pattern">Firstname must only contains letters.</li>
+            <li *ngIf="firstname.errors.minlength">First name must be at least {{ firstname.errors.minlength.requiredLength}} characters long.</li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <label for="lastname" class="control-label">Lastname</label>
+          <input type="text" 
+                 class="form-control"
+                 id="lastname"
+                 name="lastname"
+                 #lastname="ngModel"
+                 required
+                 pattern="[A-Za-z ]+$"
+                 minlength="2"
+                 [(ngModel)]="newUser.lastname" /> 
+          <ul class="text-danger list-unstyled" *ngIf="(submitted || lastname.dirty) && lastname.invalid">
+            <li *ngIf="lastname.errors.required">Please enter your lastname</li>
+            <li *ngIf="lastname.errors.minlength">Your lastname must be ast least {{lastname.errors.minlength.requiredLength }} characters long</li>
+            <li *ngIf="lastname.errors.pattern">You lastname must contain only letters</li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <label for="email" class="control label">Email</label>
+          <input type="email" 
+                class="form-control"
+                id="email"
+                name="email"
+                #emailAddress="ngModel"
+                required
+                email
+                [(ngModel)]="newUser.email" />
+          <ul class="text-danger list-unstyled" *ngIf="(submitted || emailAddress.dirty) && emailAddress.invalid">
+            <li *ngIf="emailAddress.errors.required">You email is required</li>
+            <li *ngIf="emailAddress.errors.email">You email {{ emailAddress.errors.email.actualValue }} is invalid</li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <label for="gender" class="control-label">Gender</label>
+          <select class="form-control" 
+                  id="gender"
+                  name="gender"  
+                  #sex="ngModel"
+                  required 
+                  [(ngModel)]="newUser.gender">
+            <option value=""></option>
+            <option [value]="gender.Male">{{ gender.Male }}</option>
+            <option [value]="gender.Female">{{ gender.Female }}</option> 
+          </select>
+          <ul class="text-danger list-unstyled" *ngIf="(submitted || sex.dirty) && sex.invalid">
+            <li *ngIf="sex.errors.required">Please select you gender</li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <label for="city" class="control-label">City</label>
+            <input type="text" 
+                   class="form-control"
+                   id="city"
+                   name="city" 
+                   #city="ngModel" 
+                   required
+                   [(ngModel)]="newUser.city" />
+            <ul class="text-danger list-unstyled" *ngIf="(submitted || city.dirty) && city.invalid">
+              <li *ngIf="city.errors.required">City is required</li>
+            </ul>
+
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
