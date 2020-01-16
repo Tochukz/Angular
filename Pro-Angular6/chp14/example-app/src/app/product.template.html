@@ -23,7 +23,7 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.category }}</td>
                 <td>{{ item.price }}</td>
-            </tr>   
+            </tr>
         </table>
         <div class="form-group">
             <label>Product Name</label>
@@ -35,8 +35,8 @@
             <!--with ngModel you don't have to combine an event binding with a property binding to get a two-way data-binding-->
             <input  class="form-control" [(ngModel)]="selectedProduct" />
             <!--This is called a banana-in-a-box binding-->
-            <!--You can use the ngMOdel directive with just the square bracket [ngModel] and Angular will set the initial value of the element 
-                but won't listen for events, which means that changes made by the user won't be automatica;;y reflected in the application model. 
+            <!--You can use the ngMOdel directive with just the square bracket [ngModel] and Angular will set the initial value of the element
+                but won't listen for events, which means that changes made by the user won't be automatica;;y reflected in the application model.
             -->
         </div>
     </div>
@@ -54,14 +54,14 @@
                 <th>Category</th>
                 <th>Price</th>
             </tr>
-            <tr *ngFor="let item of getProducts(); let i = index" 
-                (mouseover) = "product.value = item.name"  
-                [class.bg-info]="product.value == item.name">  
+            <tr *ngFor="let item of getProducts(); let i = index"
+                (mouseover) = "product.value = item.name"
+                [class.bg-info]="product.value == item.name">
                 <th (mouseover)="selectedProduct = item.name">{{ i + 1 }}</th>
                 <td>{{ item.name }}</td>
                 <td>{{ item.category }}</td>
                 <td>{{ item.price }}</td>
-            </tr>   
+            </tr>
         </table>
         <div class="form-group">
             <label>Product Name</label>
@@ -91,7 +91,7 @@
     <div class="col-sm-4">
         <h3>Attribute-based from validation</h3>
         <div class="bg-info text-white mb-2 p-2">Model Data: {{ jsonProduct }}</div>
-        <!--The novalidate attribute tells the bvrowser not to use its native validation feature since Angular will be providing the validation-->
+        <!--The novalidate attribute tells the browser not to use its native validation feature since Angular will be providing the validation-->
         <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)">
             <div class="bg-danger text-white p-2 mb-2" *ngIf="formSubmitted && form.invalid">
                 There are problems with the form
@@ -106,10 +106,10 @@
                        name="name"
                        required
                        minlength="5"
-                       pattern="^[A-za-z ]+$" 
+                       pattern="^[A-za-z ]+$"
                        [(ngModel)]="newProduct.name"
                        #name="ngModel" />
-                <!--Since this input element is being used to capture the value of the Product.name property, the name oattributes has been set to name. -->
+                <!--Since this input element is being used to capture the value of the Product.name property, the name attributes has been set to name. -->
                 <ul class="text-danger list-unstyled" *ngIf="(formSubmitted || name.dirty ) && name.invalid">
                   <li *ngIf="name.errors.required">You must enter a product name</li>
                   <li *ngIf="name.errors.pattern">Product names can only contain letters and spcaces</li>
@@ -118,7 +118,7 @@
             </div>
             <div class="form-group">
                 <label>Category</label>
-                <input class="form-control" 
+                <input class="form-control"
                        name="category"
                        required
                        minlength="5"
@@ -129,8 +129,8 @@
                     <!--Here we use the null conditional operator (?) instead of checking that the field is invalid with category.invalid in the ul element like we did for the first form-group-->
                     <li *ngIf="category.errors?.required">The category field is required</li>
                     <li *ngIf="category.errors?.minlength">
-                        The minimum number of characters for category field is {{ category.errors.minlength.requiredLength }} 
-                        but you have only entered {{ category.errors.minlength.actualLength}} 
+                        The minimum number of characters for category field is {{ category.errors.minlength.requiredLength }}
+                        but you have only entered {{ category.errors.minlength.actualLength}}
                     </li>
                     <li *ngIf="category.errors?.pattern">
                         Only letters, numbers and spaces can be used for categories i.e {{ category.errors.pattern?.requiredPattern }}
@@ -140,7 +140,7 @@
             </div>
             <div class="form-group">
                 <label>Price</label>
-                <input class="form-control" 
+                <input class="form-control"
                        name="price"
                        required
                        minlength="2"
@@ -149,16 +149,16 @@
                        #price="ngModel">
                 <!--Here we use the component to display validation messaged-->
                 <ul class="text-danger list-unstyled" *ngIf="price.dirty && price.invalid">
-                  <li *ngFor="let message of getValidationMessages(price, 'price')">{{  message }}</li> 
+                  <li *ngFor="let message of getValidationMessages(price, 'price')">{{  message }}</li>
                </ul>
             </div>
             <!--<button class="btn btn-primary" (click)="addProduct(newProduct)">Create</button>-->
-            <button class="btn btn-primary" 
+            <button class="btn btn-primary"
                     type="submit"
                     [disabled]="formSubmitted && form.invalid"
                     [class.btn-secondary]="formSubmitted && form.invalid">Create</button>
         </form>
-        <!--The angular validation feature works only when there is a form element present, 
+        <!--The angular validation feature works only when there is a form element present,
             and Angular will report an error if you add the ngControl directive to an element that is not contained in a form.-->
     </div>
 
@@ -166,7 +166,7 @@
         <h3>Model-based Form validation</h3>
         <form class="m-2" novalidate [formGroup]="productFormGroup" (ngSubmit)="submitForm(productFormGroup)">
             <div class="bg-danger text-white p-2 mb-2" *ngIf="formSubmitted && productFormGroup.invalid">
-                There are problems with the form 
+                There are problems with the form
                 <ul>
                     <li *ngFor="let error of productFormGroup.getFormValidationMessages()">{{ error }}</li>
                 </ul>
@@ -193,7 +193,7 @@
                     <li *ngFor="let error of productFormGroup.controls['price'].getValidationMessages()"> {{ error }}</li>
                 </ul>
             </div>
-            <button class="btn btn-primary" 
+            <button class="btn btn-primary"
                      type="submit"
                      [disabled]="formSubmitted && productFormGroup.invalid"
                      [class.btn-secondary]="formSubmitted && form.invalid">
@@ -205,7 +205,7 @@
 
             The formControlName attribute of each input element identifies the input element to the model-based form system
             using the name used in the name used in the ProductFormGroup.
-            Thisattribute also allws a]Angular to add and remove the validation lasses for the input element. 
+            Thisattribute also allws a]Angular to add and remove the validation lasses for the input element.
             It tell Angular what specific validators to use in validating the input element.
         -->
     </div>
@@ -214,7 +214,7 @@
         <h3>Generating the Elements from the Model</h3>
         <form class="m-2" novalidate [formGroup]="productFormGroup" (ngSubmit)="submitForm(productFormGroup)">
             <div class="bg-danger text-white p-2 mb-2" *ngIf="formSubmited && productFormGroup.invalid">
-              There are problems with the form.  
+              There are problems with the form.
               <ul>
                   <li *ngFor="let error of productFormGroup.getFormValidationMessages()"> {{ error }}</li>
               </ul>
@@ -231,9 +231,7 @@
                     [disabled]="formSubmitted && productFormGroup.invalid"
                     [class.btn-seconday]="formSubmitted && productFormGroup.invalid">
                 Create
-            </button> 
+            </button>
         </form>
     </div>
 </div>
-
-
