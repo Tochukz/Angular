@@ -1,0 +1,99 @@
+<style>
+  input.ng-dirty.ng-invalid {
+      border: 2px solid #ff0000;
+  }
+  input.ng-dirty.ng-valid {
+      border: 2px solid #6bc502;
+  }
+</style>
+
+<div class="row m-2">
+    <div class="col-3">
+        <h3>Generating the Elements from the Model</h3>
+        <form novalidate [formGroup]="productFormGroup" (ngSubmit)="submitForm(productFormGroup)">
+            <div class="form-group" *ngFor="let formControl of productFormGroup.productControls">
+              <label>{{ formControl.label }}</label>
+              <input class="form-control"
+                     [(ngModel)]="newProduct[formControl.modelProperty]"
+                     name="{{ formControl.modelProperty }}"  
+                     formControlName="{{ formControl.modelProperty }}"/>
+              <ul class="text-danger list-unstyled" *ngIf="(formSubmitted || formControl.dirty) && formControl.invalid">
+                <li *ngFor="let error of formControl.getValidationMessages()">{{ error }}</li>
+              </ul>
+            </div>
+            <button class="btn btn-primary"
+                    type="submit"
+                    [disabled]="formSubmitted && productFormGroup.invalid"
+                    [class.btn-seconday]="formSubmitted && productFormGroup.invalid">
+                Create
+            </button> 
+        </form>
+    </div>
+    <div class="col-3">
+        <table class="table table-sm table-bordered table-striped">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+            <!--Custom directive with static input-->
+            <tr *ngFor="let item of getProducts(); let i = index" color-attr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td color-attr="bg-warning">{{ item.category }}</td>
+                <td color-attr="bg-info">{{ item.price }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-3">
+        <table class="table table-sm table-bordered table-striped">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+            <!--Custom directive with input expression support -->
+            <tr *ngFor="let item of getProducts(); let i = index" 
+                [color2-attr]="getProducts().length < 6 ? 'bg-success' : 'bg-warning'"
+                [color2-product]="item"
+                (color2-category)="newProduct.category=$event">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td [color2-attr]="item.category == 'Soccer'? 'bg-info' :  null ">{{ item.category }}</td>
+                <td [color2-attr]="'bg-info'">{{ item.price }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-3">
+        <div class="form-group bg-info text-white p-2">
+            <label>Name:</label>
+            <!--<input class="bg-primary text-white" [paModel]="newProduct.name" (paModelChange)="newProduct.name=$event" />-->
+            <input class="bg-primary text-white" [(paModel)]="newProduct.name" #paModelVar="paModel" />
+            <div class="bg-primary text-white">Direction: {{ paModelVar.direction }}</div>
+        </div>
+        <table class="table table-sm table-bordered table-striped">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+            <!--Custom directive with input expression support -->
+            <tr *ngFor="let item of getProducts(); let i = index" 
+                [color3-attr]="getProducts().length < 6 ? 'bg-success' : 'bg-warning'"
+                [color3-product]="item"
+                (color3-category)="newProduct.category=$event">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td [color3-attr]="item.category == 'Soccer'? 'bg-info' :  null ">{{ item.category }}</td>
+                <td [color3-attr]="'bg-info'">{{ item.price }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+

@@ -340,7 +340,7 @@ __Event binding example__
 ```
 <td (mouseover)="selectedProduct = item.name">
 ```
-The expressions in event bindings are sllowed to make changes to the state of the application and can contain assignment operators such as =.  
+The expressions in event bindings are allowed to make changes to the state of the application and can contain assignment operators such as =.  
 
 Although you can define properties dynamically, a safer approach is to define all the properties that a template uses in  the component.  
 
@@ -371,6 +371,7 @@ There are four attributes that you can add to input elements, each of which defi
 * _minlength_ This attribute us used to specify a minimum number of characters.
 * _maxlength_ This cannot be applied directly to form elements because it conflicts with the HTML5 attribute of the same name.  
 * _pattern_ This attribute is used to specify a regular expression that the value provided by the user must match.  
+* _email_ This attribute is used to specify an email input.  
 These are part of the HTML specification, but Angular build on these properties with some additional features.  
 
 __Angular Form Validation Classes__   
@@ -384,7 +385,7 @@ To assign a template reference variable to a validation object do
 ```
 <input #name="ngModel" [(ngModel)]="product.name" ... />
 ```
-The properties of the validation object(`ngModel`) includes `path`, `valid`, `invalid`, `pristine`, `dirty`, `touched`, `untouched`, `errors` and `value`.
+The properties of the validation object(`ngModel`) includes `path`, `valid`, `invalid`, `pristine`, `dirty`, `touched`, `untouched`, `errors` and `value`. The `path` property returns the name of the element.
 The `errors` property is created only when there are validation errors.  
 
 __The Validator Properties__  
@@ -392,8 +393,31 @@ __The Validator Properties__
 * _Validators.minLength_  
 * _Validators.maxLength_
 * _Validators.pattern_  
-Validators and be combined using the _Validators.compose_ method so that several checks are performed on a single element.    
+Validators and be combined using the _Validators.compose_ method so that several checks are performed on a single element as shown below:
+```
+Validators.compose([Validator.required, Validators.patter("^[A-Za-z]+$")])
+```
 
-_Types of Form Validations_
+__Types of Form Validations__  
 1. Attribute-based form validation.
-2. Model-base form validation
+2. Model-base form validation or Reactive Forms
+
+
+### Chapter 15: Creating Attribute Directives
+Attribute directives are classes that are able to modify the behavior or appearance of the element they are applied to. The style and class bindings are examples of attribute directives.  
+Attribute directives are classes to which the @Directive decorator has been applied. They are enabled in the directives property of the component responsible for a template and applied using a CSS selector.  
+Angular supports two other types of directive - structural directive and components.  
+
+__The Directive Lifecycle Hook Methods__  
+* _ngOnInit_  called after initial value of input properties of the directive are all set
+* _ngOnChanges_ called when value of an input property changes and also before `ngOnInit`
+* _ngDoCheck_ called during the change detection process. Directive can update any state that isn't directly associated with an input property.  
+* _ngAfterContentInit_  called when the directive's content has been initialized.  
+* _ngAfterContentChecked_ called after directive's content has been inspected as part of the change detection process.  
+* _onDestroy_ class immediately before Angular destroys a directive.  
+
+__Create Host Element Bindings__    
+Angular is intended to be run in a range of different execution environments, and not all of then can be assumed to provide the DOM API.  
+Bindings on the host element are defined using two decorators `@HostBinding` and `@HostListener` both of which are defined in the @angular/core module.  
+The `@HostBinding` decorator is used to set up a property binding on the host element and is applied to a directive property.
+The `@HostListener` decorator is used to set up an event binding on the host element and is applied to a method.  
