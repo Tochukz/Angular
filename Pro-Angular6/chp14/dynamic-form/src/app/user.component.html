@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-sm-6">
+        <table class="table-sm table-bordered table-striped ">
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>City</th>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td>{{ user.Id }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.city }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-4">
+        <h3>Register</h3>
+        <form [formGroup]="userFormGroup" (ngSubmit)="register(userFormGroup)">
+            <div class="bg-danger text-white p-2" *ngIf="formSubmitted && userFormGroup.invalid">
+                <ul>
+                    <li *ngFor="let errorMessage of userFormGroup.getFormValidationMessages()">{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Firstname</label>
+                <input class="form-control" name="firstname" formControlName="firstname">
+                <ul class="list-unstyled text-danger" *ngIf="(formSubmitted || userFormGroup.controls.firstname.dirty) && userFormGroup.controls.firstname.invalid">
+                  <li *ngFor="let errorMessage of userFormGroup.controls.firstname.getFieldValidationMessages()">{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Lastname</label>
+                <input class="form-control" name="lastname" formControlName="lastname">
+                <ul class="list-unstyled text-danger" *ngIf="(formSubmitted || userFormGroup.controls.lastname.dirty) && userFormGroup.controls.lastname.invalid">
+                  <li *ngFor="let errorMessage of userFormGroup.controls.lastname.getFieldValidationMessages()">{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input class="form-control" name="email" formControlName="email">
+                <ul class="list-unstyled text-danger" *ngIf="(formSubmitted || userFormGroup.controls.email.dirty) && userFormGroup.controls.email.invalid">
+                    <li *ngFor="let errorMessage of userFormGroup.controls.email.getFieldValidationMessages()">{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Gender</label>
+                <select class="form-control" name="gender" formControlName="gender">
+                    <option value=""></option>
+                    <option [value]="gender.Male">{{ gender.Male }}</option>
+                    <option [value]="gender.Female">{{ gender.Female }}</option>
+                </select>
+                <ul class="list-unstyled text-danger" *ngIf="(formSubmitted || userFormGroup.controls.gender.dirty) && userFormGroup.controls.gender.invalid">
+                    <li *ngFor="let errorMessage of userFormGroup.controls.gender.getFieldValidationMessages()">{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label class="control-label">City</label>
+                <input class="form-control" name="city" formControlName="city">
+                <ul class="list-unstyled text-danger" *ngIf="(formSubmitted || userFormGroup.controls.city.dirty) && userFormGroup.controls.city.invalid">
+                    <li *ngFor="let errorMessage of userFormGroup.controls.city.getFieldValidationMessages()">{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Register">
+        </form>
+    </div>
+</div>
