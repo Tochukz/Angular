@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-sm-6">
+        <table class="table-sm table-bordered table-striped ">
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>City</th>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td>{{ user.Id }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.city }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-4">
+        <h3>Register</h3>
+        <form [formGroup]="userFormGroup" (ngSubmit)="register(userFormGroup)">
+            <div class="bg-danger text-white p-2" *ngIf="formSubmitted && userFormGroup.invalid">
+                <ul>
+                    <li *ngFor="let errorMessage of userFormGroup.getFormValidationMessages()">{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <div class="form-group" *ngFor="let formControl of userFormGroup.userControls">
+                <label class="control-label">{{ formControl.label }}</label>
+                <ng-container *ngIf="formControl.modelProperty != 'gender'">
+                    <input class="form-control" name="{{ formControl.modelProperty }}" formControlName="{{ formControl.modelProperty }}">
+                </ng-container>
+                <ng-container *ngIf="formControl.modelProperty == 'gender'">
+                    <select class="form-control" name="{{ formControl.modelProperty }}" formControlName="{{ formControl.modelProperty }}">
+                        <option value=""></option>
+                        <option [value]="gender.Male">{{ gender.Male }}</option>
+                        <option [value]="gender.Female">{{ gender.Female }}</option>
+                    </select>
+                </ng-container>
+                <ul class="list-unstyled text-danger" *ngIf="(formSubmitted || formControl.dirty) && formControl.invalid">
+                    <li *ngFor="let errorMessage of formControl.getFieldValidationMessages()">{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Register">
+        </form>
+    </div>
+</div>
