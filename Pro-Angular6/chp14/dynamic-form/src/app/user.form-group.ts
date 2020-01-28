@@ -5,7 +5,7 @@ import { UserFormControl } from './user.form-control';
 export class UserFormGroup extends FormGroup {
   constructor() {
       super({
-          firstname: new UserFormControl('Firstname', 'name', '', Validators.compose([
+          firstname: new UserFormControl('Firstname', 'firstname', '', Validators.compose([
               Validators.required,
               Validators.pattern('^[A-Za-z ]+$'),
               Validators.minLength(2),
@@ -44,12 +44,12 @@ export class UserFormGroup extends FormGroup {
 }
 
 /*
- * The FormGroup  class is used to manage the form elements and its contents. 
+ * The FormGroup  class is used to manage the form elements and its contents.
 
- * The constructor for the FormGroup class, which is the superclass for the UserFormGroup, accepts an object whose property names 
- * correspond to the names of the input elements in the template, each of which is assgined a UserFormControl object that 
- * will represent it and that specifies the validation checks that are required. 
- * 
+ * The constructor for the FormGroup class, which is the superclass for the UserFormGroup, accepts an object whose property names
+ * correspond to the names of the input elements in the template, each of which is assgined a UserFormControl object that
+ * will represent it and that specifies the validation checks that are required.
+ *
  * The FormGroup class provide a controls property that returns a collection of the FormControl objects that it is managing,
- * indexed by name. 
+ * indexed by name.
  */
