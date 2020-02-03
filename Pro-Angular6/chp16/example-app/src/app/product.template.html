@@ -1,0 +1,102 @@
+<div class="row m-2">
+    <div class="col-4">
+        <form novalidate [formGroup]="productFormGroup" (ngSubmit)="submitForm(productFormGroup)">
+            <div class="form-group" *ngFor="let control of productFormGroup.productControls">
+                <label>{{ control.label }}</label>
+                <input class="form-control"
+                       [(ngModel)]="newProduct[control.modelProperty]"
+                       name="{{ control.modelProperty }}"
+                       formControlName="{{ control.modelProperty }}" />
+                <ul class="text-danger list-unstyled" *ngIf="(formSubmitted || control.dirty) && !control.valid">
+                  <li *ngFor="let error of control.getValidationMessages()">
+                      {{ error }}
+                  </li>
+                </ul>
+            </div>
+            <button class="btn btn-primary"
+                    type="submit"
+                    [disabled]="formSubmitted && !productFormGroup.valid"
+                    [class.btn-secondary]="formSubmitted && !productFormGroup.valid">
+                Create
+            </button>
+        </form>
+    </div>
+    <div class="col-8">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" [(ngModel)]="showTable" />
+                Show Table
+            </label>
+        </div>
+        <div class="checkbox">
+            <label> 
+                <input type="checkbox" [(ngModel)]="darkColor" />
+                Dark Cell Color
+            </label>
+        </div>
+        <!--<ng-template [paIf]="showTable">-->
+        <table *paIf="showTable" [paCellDarkColor]="darkColor"  class="table table-sm table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>    
+                <ng-template [paForOf]="getProducts()" let-item let-i="index" let-odd="odd" let-even="even">             
+                    <tr [class.bg-info]="odd" [class.bg-warning]="even">
+                        <td style="vertical-align:middle">{{ i + 1 }}</td>                    
+                        <td style="vertical-align:middle">{{ item.name }}</td>
+                        <td style="vertical-align:middle">{{ item.category }}</td>
+                        <td style="vertical-align:middle">{{ item.price }}</td>
+                        <td class="text-center">
+                            <button class="btn btn-danger btn-sm" (click)="deleteProduct(item.id)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </ng-template>  
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+            </tbody>
+            <!--Using the concise syntax for the iterative structural directive-->                
+            <tbody>
+                <tr *paFor="let item of getProducts(); let i = index; let odd = odd; let even = even"  [class.bg-info]="odd" [class.bg-warning]="even">
+                    <td>{{ i + 1 }}</td>  
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.price }}</td>
+                    </tr>
+            </tbody>
+        </table>
+        <!--</ng-template>-->
+    </div>
+</div>
+
+
+<!--
+There are two syntax available to use a structural directive - template syntax and concise syntax.
+Template syntax wraps the template view in an ng-template element:   
+<ng-template [paIf]>
+    <div>
+        Content
+    </div>
+</ng-template>
+The concise syntax applies the directive's attribute/selector on the root element:
+<div *paIf>
+    Content
+</div?
+Take note of the asterisk(*) prefix and absent of the square brackets for the directive attribute used in the concise syntax. 
+The asterisk is what  tells angular that this is a structoral directive.  
+
+For the iterating structural directive, the name of the attribute/selector must end with "Of"
+The "Of" substring is ommited when using the concise syntax. 
+
+The iterative structural directive also have a second attribute which represents an implicit variable to be used 
+within the ng-template. For example the attribute let-item defined an implicit variable of item which is then 
+used within the template.   
+-->
