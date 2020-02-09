@@ -1,0 +1,14 @@
+div {
+    background-color: lightcoral;
+}
+:host:hover {
+    font-size: 25px;
+}
+:host-context(.angularApp) input {
+    background-color: lightgray;
+}
+
+/*
+ * The :host selector targets the host element, which is the custom HTML element used to represent the component.
+ * The :host-context selector targets a class in the host element's ancestors. It is limited and can only target a class.
+ */

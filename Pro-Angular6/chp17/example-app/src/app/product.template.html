@@ -1,0 +1,21 @@
+<div class="row m-2">
+    <div class="col-4 p-2 text-dark">
+        <paProductForm (paNewProduct)="addProduct($event)"></paProductForm>
+    </div>
+    <div class="col-8 p-2">
+        <!--The content of this host element will replace the ng-content element in it's HTML template-->
+        <paToggleView>
+          <paProductTable [repository]="productRepository"></paProductTable>
+        </paToggleView>
+        <!--
+        <div class="checkbox">
+            <label> 
+                <input type="checkbox" [(ngModel)]="darkColor" />
+                Dark Cell Color
+            </label>
+        </div> 
+         -->
+    </div>
+</div>
+
+
