@@ -29,12 +29,11 @@
             </label>
         </div>
         <div class="checkbox">
-            <label> 
+            <label>
                 <input type="checkbox" [(ngModel)]="darkColor" />
                 Dark Cell Color
             </label>
         </div>
-        <!--<ng-template [paIf]="showTable">-->
         <table *paIf="showTable" [paCellDarkColor]="darkColor"  class="table table-sm table-bordered table-striped">
             <thead>
                 <tr>
@@ -45,10 +44,10 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>    
-                <ng-template [paForOf]="getProducts()" let-item let-i="index" let-odd="odd" let-even="even">             
+            <tbody>
+                <ng-template [paForOf]="getProducts()" let-item let-i="index" let-odd="odd" let-even="even">
                     <tr [class.bg-info]="odd" [class.bg-warning]="even">
-                        <td style="vertical-align:middle">{{ i + 1 }}</td>                    
+                        <td style="vertical-align:middle">{{ i + 1 }}</td>
                         <td style="vertical-align:middle">{{ item.name }}</td>
                         <td style="vertical-align:middle">{{ item.category }}</td>
                         <td style="vertical-align:middle">{{ item.price }}</td>
@@ -58,29 +57,28 @@
                             </button>
                         </td>
                     </tr>
-                </ng-template>  
+                </ng-template>
                 <tr>
                     <td colspan="4"></td>
                 </tr>
             </tbody>
-            <!--Using the concise syntax for the iterative structural directive-->                
+            <!--Using the concise syntax for the iterative structural directive-->
             <tbody>
                 <tr *paFor="let item of getProducts(); let i = index; let odd = odd; let even = even"  [class.bg-info]="odd" [class.bg-warning]="even">
-                    <td>{{ i + 1 }}</td>  
+                    <td>{{ i + 1 }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.category }}</td>
                     <td>{{ item.price }}</td>
                     </tr>
             </tbody>
         </table>
-        <!--</ng-template>-->
     </div>
 </div>
 
 
 <!--
 There are two syntax available to use a structural directive - template syntax and concise syntax.
-Template syntax wraps the template view in an ng-template element:   
+Template syntax wraps the template view in an ng-template element:
 <ng-template [paIf]>
     <div>
         Content
@@ -90,13 +88,13 @@ The concise syntax applies the directive's attribute/selector on the root elemen
 <div *paIf>
     Content
 </div?
-Take note of the asterisk(*) prefix and absent of the square brackets for the directive attribute used in the concise syntax. 
-The asterisk is what  tells angular that this is a structoral directive.  
+Take note of the asterisk(*) prefix and absent of the square brackets for the directive attribute used in the concise syntax.
+The asterisk is what  tells angular that this is a structoral directive.
 
 For the iterating structural directive, the name of the attribute/selector must end with "Of"
-The "Of" substring is ommited when using the concise syntax. 
+The "Of" substring is ommited when using the concise syntax.
 
-The iterative structural directive also have a second attribute which represents an implicit variable to be used 
-within the ng-template. For example the attribute let-item defined an implicit variable of item which is then 
-used within the template.   
+The iterative structural directive also have a second attribute which represents an implicit variable to be used
+within the ng-template. For example the attribute let-item defined an implicit variable of item which is then
+used within the template.
 -->
