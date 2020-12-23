@@ -1,0 +1,77 @@
+<form [formGroup]="employeeForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Create Employee</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="fullName" class="col-sm-2 control-label" >Full Name</label>
+        <div class="col-sm-8">
+          <input id="fullname" formControlName="fullName" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-8">
+          <input id="email" formControlName="email" type="text" class="form-control">
+        </div>
+      </div>
+      <div formGroupName="skills">
+        <div class="form-group">
+          <label for="skillName" class="col-sm-2 control-label">skill</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="skillName" placeholder="Name" formControlName="skillName">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" placeholder="Experience in Years" formControlName="experienceInYears">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label">Proficiency</label>
+          <div class="col-md-8">
+            <label class="radio-inline">
+              <input type="radio" value="beginner" formControlName="proficiency"> Beginner
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="intermediate" formControlName="proficiency"> Intermediate
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="advanced" formControlName="proficiency"> Advanced
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="btn-toolbar">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="button" (click)="onLoadData()">Load Data</button>
+      </div>
+    </div>
+  </div>
+</form>
+<table class="table table-bordered table-striped table-sm">
+  <tr>
+    <th>Form Group</th>
+    <th>FormControl (fullName)</th>
+  </tr>
+  <tr>
+    <td>
+      touched: {{ employeeForm.touched }} <br />
+      dirty: {{ employeeForm.dirty }} <br />
+      valid: {{ employeeForm.valid }} <br />
+      Form Values: {{ employeeForm.value | json }}
+    </td>
+    <td>
+      touched : {{ employeeForm.get('fullName').touched }} <br />
+      dirty : {{ employeeForm.get('fullName').dirty }} <br />
+      valid:  {{ employeeForm.controls.fullName.valid }} <br />
+      Full Name Value: {{ employeeForm.get('fullName').value }}
+    </td>
+  </tr>
+</table>
+
+<!--
+  The formGroup and formControlName directive is provided by the ReactiveFormsModule and therefore this module must be imported in the
+  root module.
+-->

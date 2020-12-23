@@ -55,4 +55,31 @@ There are two ways to create forms in Angular:
 
 We use to classes to create the form control tree  
 * _FormGroup_
-* _FormControl_
+* _FormControl_  
+
+Both _FormGroup_ and _FormControl_ are subclasses of the _AbstractControl_ abstract class.
+The _AbstractControl_ class has the following properties: `value`,  `errors`, `valid`, `invalid`, `dirty`, `pristine`, `touched`, and `untouched`.      
+
+The _AbstractControl_ class also have the following useful methods: `setValidator()`, `clearValidators()`, `updateValueAndValidity()`, `setValue()`, `patchValue()` and `reset()`.  
+
+The _AbstractControl_ class has the `valueChange` Observable property.     
+
+_FormControl_ tracks the value and state of an individual HTML input element.
+_FormGroup_ instance tracks the value and state of all the form Controls in that form group.  
+
+You can access the control instances from the form group in two ways:
+* `formGroup.controls.formControlName.value`    
+* `formGroup.get('formControlName').value`  
+For example:
+* `employeeForm.controls.fullName.value`
+* `employeeForm.get('fullName').value`  
+
+__The FormBuilder class__
+The Form Builder class has 3 methods:  
+* control()
+* group()  
+* array()  
+
+__Reactive Form Validators__  
+We have the following validators:  
+`required`, `requiredTrue`, `email`, `pattern`, `min`, `max`, `minLength`, `maxLength`.

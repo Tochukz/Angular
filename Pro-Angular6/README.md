@@ -421,3 +421,22 @@ Angular is intended to be run in a range of different execution environments, an
 Bindings on the host element are defined using two decorators `@HostBinding` and `@HostListener` both of which are defined in the @angular/core module.  
 The `@HostBinding` decorator is used to set up a property binding on the host element and is applied to a directive property.
 The `@HostListener` decorator is used to set up an event binding on the host element and is applied to a method.  
+
+### Chapter 16: Creating Structural Directive  
+Structural directives change the layout of the HTML document by adding and removing elements. They are usually prefixed by an asterisk such as `*ngIf` and `*ngFor`.  They use micro-templates to add content to the HTML document.
+
+To be continued  
+
+### Chapter 17: Understanding Components    
+Components are directives that define their own HTML content and, optionally, CSS styles.  
+
+__Setting View Encapsulation__  
+You can learn more about the shadow DOM at [Mozilla Network](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM)
+
+__Using the Shadow DOM CSS Selectors__  
+With the Shadow DOM in place, there are boundaries that regular CSS selectors do not operate across.  
+There are a number of special CSS selectors that are useful when using styles that rely on the shadow DOM(even when it is emulated):
+* `:host` Used to match the component's host element.  
+* `:host-context(classSelector)` Used to match the ancestors of the host element that are members of a specific class.  
+
+* `/deep/` or `>>>` Used by the parent component to define styles that affect the elements in child component templates.     
