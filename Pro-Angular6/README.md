@@ -440,3 +440,6 @@ There are a number of special CSS selectors that are useful when using styles th
 * `:host-context(classSelector)` Used to match the ancestors of the host element that are members of a specific class.  
 
 * `/deep/` or `>>>` Used by the parent component to define styles that affect the elements in child component templates.     
+
+### Chapter 18: Using and Creating Pipes  
+Pipes should be simple and focused on preparing data. You can implement data preparation code in components directives, but that makes it header to reuse in other parts of the application.

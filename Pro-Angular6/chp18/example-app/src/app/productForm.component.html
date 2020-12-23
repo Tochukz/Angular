@@ -1,0 +1,20 @@
+<form novalidate [formGroup]="productFormGroup" (ngSubmit)="submitForm(productFormGroup)">
+    <div class="form-group" *ngFor="let control of productFormGroup.productControls">
+        <label>{{ control.label }}</label>
+        <input class="form-control"
+               [(ngModel)]="newProduct[control.modelProperty]"
+               name="{{ control.modelProperty }}"
+               formControlName="{{ control.modelProperty }}" />
+        <ul class="text-danger list-unstyled" *ngIf="(formSubmitted || control.dirty) && !control.valid">
+          <li *ngFor="let error of control.getValidationMessages()">
+              {{ error }}
+          </li>
+        </ul>
+    </div>
+    <button class="btn btn-primary"
+            type="submit"
+            [disabled]="formSubmitted && !productFormGroup.valid"
+            [class.btn-secondary]="formSubmitted && !productFormGroup.valid">
+        Create
+    </button>
+</form>
