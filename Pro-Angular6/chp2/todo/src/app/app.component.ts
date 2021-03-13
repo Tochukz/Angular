@@ -8,17 +8,28 @@ import { Model, TodoItem  } from  './model';
 export class AppComponent {
   model = new Model();
 
+
   getName() {
     return this.model.user;
   }
-
-  getTodoItems() {
-    return this.model.items.filter(item => !item.done);
+ 
+  getTodoItems() { 
+    const filterBy = this.model.filterBy;
+    if (filterBy) {      
+      return this.model.items.filter(item => item.done.toString() == filterBy);
+    } else {
+      return this.model.items;
+    }
   }
 
-  addItem(newItem) {
-    if (newItem != "") {
-      this.model.items.push(new TodoItem(newItem, false));
+  filterTodoList(val) {
+    this.model.filterBy = val;
+  }
+
+  addItem(target) {
+    if (target.value) {
+      this.model.items.push(new TodoItem(target.value, false));
+      target.value = '';
     }
   }
 }

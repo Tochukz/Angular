@@ -1,7 +1,8 @@
 export class Model {
     user; 
     items;
-
+    filterBy;
+    
     constructor() {
         this.user = "Chucks";
         this.items = [
@@ -22,6 +23,7 @@ export class Model {
                 done: false
             }
         ];
+        this.filterBy = '';
     }
 }
 

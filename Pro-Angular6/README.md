@@ -85,6 +85,12 @@ model.
 __Adopting the Data Store Data Format__  
 Decide how the client needs to represent data, and then ensure you use the format within the data store - and if the data store can't support that format natively, then it is the job of the server to perform the translation.  
 
+### Chapter 4: An HTML and CSS Primer   
+Skipped...
+
+### Chapter 5: JavaScript and TypeScript: Part 1
+Skipped...
+
 ### Chapter 6: JavaScript and TypeScript: Part 2  
 ```
 let value: number = (<number>temp).toPrecision ? <number>temp : parseFloat(<string>temp);
@@ -99,7 +105,7 @@ Tuples are defined as a fixed-length array of types, and individual elements are
 ```
 let weatherVars: [string, string, string];
 weatherVars = ["London", "raining", TempConverter.convertFtoC("38")]
-console.log(`It is ${weatherVars[2]} degrees C and ${weatherVars[1]} in ${weatherVars[0]}`);  //It is 3.3 degrees C and raining in London
+console.log(`It is ${weatherVars[2]} degrees centigrade and ${weatherVars[1]} in ${weatherVars[0]}`);  //It is 3.3 degrees centigrade and raining in London
 ```
 __Using Indexable Types__  
 Indexable types associate a key with a value, creating a map-like collection that can be used to gather related data items together.   
@@ -443,3 +449,8 @@ There are a number of special CSS selectors that are useful when using styles th
 
 ### Chapter 18: Using and Creating Pipes  
 Pipes should be simple and focused on preparing data. You can implement data preparation code in components directives, but that makes it header to reuse in other parts of the application.
+
+To continue later...  
+
+### Chapter 19: Using Services  
+Services are classes to which the `@Injectable` decorator has been applied. Services can be used to distribute shared objects by declare the service as a constructor argument.
