@@ -159,6 +159,9 @@ Angular includes a feature called _pipes_, which are classes used to transform o
 
 ## PART II: Angular in Details  
 
+### Chapter 8: SportsStore: Orders and Checkout
+
+
 ### Chapter 11: Creating an Angular Project  
 To create a new Angular project  
 `$ ng new example-app`  
@@ -431,7 +434,7 @@ The `@HostListener` decorator is used to set up an event binding on the host ele
 ### Chapter 16: Creating Structural Directive  
 Structural directives change the layout of the HTML document by adding and removing elements. They are usually prefixed by an asterisk such as `*ngIf` and `*ngFor`.  They use micro-templates to add content to the HTML document.
 
-To be continued  
+To be continued...
 
 ### Chapter 17: Understanding Components    
 Components are directives that define their own HTML content and, optionally, CSS styles.  
@@ -454,3 +457,5 @@ To continue later...
 
 ### Chapter 19: Using Services  
 Services are classes to which the `@Injectable` decorator has been applied. Services can be used to distribute shared objects by declare the service as a constructor argument.
+
+To continue later...

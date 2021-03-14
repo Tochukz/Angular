@@ -1,0 +1,39 @@
+<div class="row mt-4">
+  <div class="col-sm-12">
+    <h3>OJLinks Bookshop</h3>
+    <h4>
+      <span class="badge badge-pill badge-primary">
+        Category <span class="badge badge-secondary"> {{ categories.length }}</span>
+      </span>
+      <span>&nbsp;</span>
+      <span class="badge badge-pill badge-primary">
+        Subcategrory <span class="badge badge-secondary"> {{ subcategories.length }} </span>
+      </span>     
+    </h4>
+  </div>
+  <div class="col-sm-2">
+    <ul class="list-group">
+      <li *ngFor="let category of categories" 
+           class="list-group-item d-flex justify-content-between align-items-center" 
+           [class.active]="category.categoryId == activeCategoy.categoryId"
+           (click)="changeActiveCategory(category.categoryId)">
+        {{ category.name }}
+        <span class="badge badge-secondary badge-pill">
+          {{ category.subcategories.length }}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-2">
+    <h4> {{ activeCategoy.name }}</h4>
+    <ul class="list-group">
+      <li *ngFor="let subcategory of activeCategoy.subcategories" class="list-group-item d-flex justify-content-between align-items-center">
+        {{ subcategory.name }}      
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-8">
+   Price {{ 200 | currency: "USD"}} <br />
+   Price {{ 200 | currency: "USD":"symbol": "2.2-2"}}
+  </div>
+</div>
