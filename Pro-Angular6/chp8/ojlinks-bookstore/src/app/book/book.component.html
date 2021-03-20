@@ -1,3 +1,14 @@
-<p>
-  book works!
-</p>
+<div class="book">
+  <div class="img-div">
+    <img src="http://ojlinks.test:8081/storage/book_img/{{book.img}}" />
+  </div>
+  <p>{{ book.title }}</p>
+  <p>{{ book.author}}</p>
+  <p>R{{ book.price }}</p>
+  <p>
+    <a href="#">Details</a>
+  </p>
+  <p>
+    <button class="btn btn-sm btn-primary">Add to Cart</button>
+  </p>
+</div> 

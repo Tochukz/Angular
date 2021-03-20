@@ -1,15 +1,10 @@
 <div class="card border-primary mb-3">
   <div class="card-header bg-primary text-white">
-    {{ subcategory.name }}
+    <h5>{{ subcategory.name }}</h5>
   </div>
   <div class="card-body">
     <div class="row">
-      <div *ngFor="let book of books" class="col-sm-4"> 
-        <div>
-          <img src="http://ojlinks.test:8081/storage/book_img/{{book.img}}" />
-        </div>
-        <p>{{ book.title }}</p>
-      </div>
+      <book *ngFor="let book of books" [book]="book"></book>
     </div>
   </div>
 </div>
