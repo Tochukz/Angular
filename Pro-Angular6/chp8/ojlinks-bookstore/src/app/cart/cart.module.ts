@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { BaselayoutModule } from './../baselayout/baselayout.module';
-import { BookdetailsComponent } from './bookdetails.component';
+import { CartComponent } from './cart.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    BaselayoutModule,
-    RouterModule
+    RouterModule,
+    BaselayoutModule
   ],
-  declarations: [BookdetailsComponent]
+  declarations: [CartComponent],
+  exports: [CartComponent]
 })
-export class BookdetailsModule { }
+export class CartModule { }

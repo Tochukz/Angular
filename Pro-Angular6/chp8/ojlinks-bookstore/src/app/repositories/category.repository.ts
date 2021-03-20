@@ -31,4 +31,11 @@ export class CategoryRepository {
   getActiveCategory(): Category {
     return this.activeCategory;
   }
+
+  setActiveCategory(categoryId: number) {
+    const category = this.categories.find(cat => cat.categoryId == categoryId);
+    if (category) {
+      this.activeCategory = category;
+    }
+  }
 }

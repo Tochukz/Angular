@@ -1,5 +1,6 @@
 import { CategoryComponent } from '../category/category.component';
 import { BookdetailsComponent } from '../bookdetails/bookdetails.component';
+import { CartComponent } from './../cart/cart.component';
 
 export default [
   {
@@ -13,5 +14,9 @@ export default [
   {
     path: 'book/:bookId',
     component: BookdetailsComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
   }
 ];

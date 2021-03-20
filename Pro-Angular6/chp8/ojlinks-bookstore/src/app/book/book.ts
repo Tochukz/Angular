@@ -8,6 +8,14 @@ export class Book {
     price: number;
 
     img: string;
+   
+    edition?: string;
+    
+    details?: string;
 
-    details: string;
+    availability?: number;
+
+    pages?: number;
+
+    language? : string;
 }

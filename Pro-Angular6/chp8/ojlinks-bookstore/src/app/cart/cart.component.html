@@ -1,0 +1,43 @@
+<baselayout>
+  <div class="row mt-4">
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>Title</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="3" class="text-right">Total</td>
+          <td colspan="3">
+            {{ cartTotal }}
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr [class.d-none]="cartItems.length > 0">
+          <td colspan="6" class="text-center">
+            Your Cart is empty!
+          </td>
+        </tr>
+        <tr *ngFor="let item of cartItems; index as i">
+          <td>{{ i +  1}}</td>
+          <td>{{ item.book.title }}</td>
+          <td>{{ format(item.book.price) }}</td>
+          <td>
+            <input type="number" [value]="item.quantity" (change)="updateQuantity($event, item.book)" />
+          </td>
+          <td>{{ format(item.book.price * item.quantity) }}</td>
+          <td>
+            <button class="btn btn-warning" (click)="removeItem(item.book)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</baselayout>

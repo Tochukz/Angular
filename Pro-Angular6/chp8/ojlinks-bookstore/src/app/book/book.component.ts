@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Book } from './book';
+import { CartRepository } from './../repositories/cart.repository';
 
 @Component({
   selector: 'book',
@@ -10,9 +11,12 @@ import { Book } from './book';
 export class BookComponent implements OnInit {
   @Input() book: Book;
 
-  constructor() { }
+  constructor(private cartRepository: CartRepository) { }
 
   ngOnInit() {
   }
 
+  addToCart() {
+    this.cartRepository.addToCart(this.book);
+  }
 }

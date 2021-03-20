@@ -2,3 +2,11 @@
     margin: 0;
     padding: 0;
   }
+
+  .container-fluid div.top-nav.bg-primary.row {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 100vw;
+    z-index: 5;
+  }

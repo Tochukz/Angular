@@ -5,6 +5,7 @@ import { tap, catchError } from 'rxjs/operators';
 
 import { Category } from '../category/category';
 import { Subcategory } from './../subcategory/subcategory';
+import { Book } from '../book/book';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,16 @@ export class CategoryService {
                .pipe(
                  tap(_ => console.log(`Fetched subcategoy ${subcategoryId}`)),
                  catchError(this.handleError<Subcategory>('getSubcategory', new Subcategory()))
+               );
+  }
+
+  getBook(bookId: number): Observable<Book> {
+    const url = `http://ojlinks-api.test:8084/api/books/${bookId}`;
+    return this.httpClient
+               .get<Book>(url, this.httpOptions)
+               .pipe(
+                 tap(_ => console.log(`Fetched book ${bookId}`)),
+                 catchError(this.handleError<Book>('getBook', new Book()))
                );
   }
 
