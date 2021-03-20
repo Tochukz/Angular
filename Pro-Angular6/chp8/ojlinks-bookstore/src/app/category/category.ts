@@ -5,5 +5,5 @@ export class Category {
 
     name: string;
 
-    subcategories: Subcategory[]
+    subcategories: Subcategory[] = [];
 }

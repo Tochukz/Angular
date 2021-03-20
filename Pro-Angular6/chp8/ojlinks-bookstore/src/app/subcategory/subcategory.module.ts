@@ -6,6 +6,7 @@ import { SubcategoryComponent } from './subcategory.component';
   imports: [
     CommonModule
   ],
-  declarations: [SubcategoryComponent]
+  declarations: [SubcategoryComponent],
+  exports: [SubcategoryComponent]
 })
 export class SubcategoryModule { }

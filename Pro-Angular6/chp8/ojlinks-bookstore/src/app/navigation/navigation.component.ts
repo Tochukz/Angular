@@ -16,4 +16,9 @@ export class NavigationComponent implements OnInit {
   get categories() {
     return this.categoryRepository.getCategories();
   }
+
+  isActiveCategory(categoryId: number) {
+    return this.categoryRepository.getActiveCategory().categoryId == categoryId;
+  }
+
 }

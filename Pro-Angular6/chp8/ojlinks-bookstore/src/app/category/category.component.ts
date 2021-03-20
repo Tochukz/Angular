@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CategoryRepository } from './../repositories/category.repository';
 @Component({
   selector: 'category',
   templateUrl: './category.component.html',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private categoryRepository: CategoryRepository) { }
 
   ngOnInit() {
   }
 
+  get subcategories() {
+    return this.categoryRepository.getActiveCategory().subcategories;
+  }
+
+  get activeCategory() {
+    return this.categoryRepository.getActiveCategory();
+  }
 }
