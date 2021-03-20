@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-4">
+    <h4>New User</h4>
+    <form  (submit)="addUser($event, name, city, job)">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" #name required />
+      </div>
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" class="form-control" #city required />
+      </div>
+      <div class="form-group">
+        <label>Job</label>
+        <input type="text" class="form-control" #job required />
+      </div>
+      <div class="form-group">      
+        <input type="submit" class="form-control btn btn-primary" value="Add User" />
+      </div>
+    </form>
+  </div>
+</div>

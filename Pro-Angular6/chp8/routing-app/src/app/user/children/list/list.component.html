@@ -1,0 +1,27 @@
+<h3>Users List</h3>  
+<div class="row">
+  <div class="col-sm-6">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>Name</th>
+          <th>See More</th>
+          <th>See More2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; index as i">
+          <td>{{ i + 1}}</td>
+          <td>{{ user.name }}</td>
+          <td>
+            <a routerLink="/users/current/{{user.userId}}">See Details</a>
+          </td>
+          <td>
+            <a [routerLink]="['/users/current', user.userId]">See Details2</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

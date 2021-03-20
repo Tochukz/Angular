@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'navigation',
   templateUrl: './navigation.component.html',
@@ -7,13 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   logout() {
-    
+    localStorage.setItem('routerApp', JSON.stringify({authenticated: false}));
+    this.router.navigateByUrl('/login');
+  }
+
+  get url() {
+    return this.router.url;
   }
 
 }
