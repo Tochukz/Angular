@@ -299,12 +299,12 @@ The _ngFor_ directive is used to generate the same set of elements for each obje
 </ng-template>
 ```
 The _ngTemplateOutlet_ directive is used to repeat a block of content in a template.  
-5.  
+5.
 ```
 <div ngClass="expr"></div>
 ```
-The _ngClass_ directive is used to manage class membership.  
-6.  
+The _ngClass_ directive is used to manage class membership.   
+6.
 ```
 <div ngStyle="expr"><.div>
 ```  
