@@ -17,7 +17,7 @@ export class CheckoutComponent implements OnInit {
 
   orderSuccessful = false;
 
-  order = {};
+  contact = new Contact();
 
   constructor(private cartRepository: CartRepository, private orderService: OrderService ) { }
 
@@ -26,14 +26,10 @@ export class CheckoutComponent implements OnInit {
 
   submitOrder(ngForm: NgForm) {
     this.submitted = true; 
-    console.log('form', ngForm);
     if (ngForm.valid) {
       this.posting = true;
-      const order = new Order([], new Contact());
+      const order = new Order([], this.contact);
       order.items = this.cartRepository.getCartItems();
-      for(let key in ngForm.value) {
-        order.contact[key] = ngForm.value[key];
-      }
       this.orderService
            .postOrder(order)
            .subscribe(response => {
