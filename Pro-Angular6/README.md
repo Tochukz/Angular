@@ -163,7 +163,13 @@ Angular includes a feature called _pipes_, which are classes used to transform o
 Completed.
 
 ## Chapter 9: SportsStore: Administration  
+__Creating the Module__   
+The admin module should be made to be self contained. The other parts of the application should not be dependent on the admin module. This is to ensure that users who do not use the admin section don't end up downloading that part of the JavaScript code.  
+However, the dynamically loaded module is allowed to declare dependencies on the main part of the application.
+The routing for the admin module is also setup in the `admin.module` file using the `RouteModule.forChild()` method to make it self contained.  
 
+__Configure the URL Routing System__   
+Dynamically loaded modules are managed through the routing configuration, which triggers the loading process when the application navigated to a specified URL.    
 
 ### Chapter 11: Creating an Angular Project  
 To create a new Angular project  
