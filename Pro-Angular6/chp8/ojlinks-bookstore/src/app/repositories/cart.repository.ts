@@ -20,6 +20,10 @@ export class CartRepository {
     }
   }
 
+  emptyCart() {
+    this.cart = [];
+  }
+  
   getCartItems(): Item[] {
     return this.cart;
   }
@@ -42,6 +46,6 @@ export class CartRepository {
         item.quantity = quantity;
         return true;
       }
-    })
+    });
   }
 }

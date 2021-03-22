@@ -19,13 +19,13 @@ export class OrderService {
 
   constructor(private httpClient: HttpClient, private configService: ConfigService) { } 
 
-  postOrder(order): Observable<Order> {
+  postOrder(order: Order): Observable<Order> {
     const url = `${this.configService.APIBaseUrl}/order/create`;
     return this.httpClient
               .post<Order>(url, order, this.httpOptions)
               .pipe(  
                 tap(_ => console.log('order posted')),
-                catchError(this.handleError<Order>('postOrder', new Order()))
+                catchError(this.handleError<Order>('postOrder', new Order([])))
               );
   }
 

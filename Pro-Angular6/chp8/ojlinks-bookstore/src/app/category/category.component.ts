@@ -15,7 +15,7 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(param => {
-      const categoryId = parseInt(param.categoryId)
+      const categoryId = parseInt(param.categoryId);
       if (categoryId) {
         console.log('init', categoryId);
         this.categoryRepository.setActiveCategory(categoryId);

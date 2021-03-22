@@ -39,8 +39,4 @@ export class CartComponent implements OnInit {
       this.categoryRepository.removeItem(book);
     }
   }
-
-  // checkout() {
-
-  // }
 }

@@ -160,6 +160,9 @@ Angular includes a feature called _pipes_, which are classes used to transform o
 ## PART II: Angular in Details  
 
 ### Chapter 8: SportsStore: Orders and Checkout
+Completed.
+
+## Chapter 9: SportsStore: Administration  
 
 
 ### Chapter 11: Creating an Angular Project  

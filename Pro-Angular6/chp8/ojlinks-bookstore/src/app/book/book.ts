@@ -17,5 +17,5 @@ export class Book {
 
     pages?: number;
 
-    language? : string;
+    language?: string;
 }

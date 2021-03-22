@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { CartModule } from './cart/cart.module';
 import { BookdetailsModule } from './bookdetails/bookdetails.module';
 import { CategoryModule } from './category/category.module';
+import { CheckoutModule } from './checkout/checkout.module';
+
 import { AppComponent } from './app.component';
 import routes from './route/routes';
 
@@ -19,7 +21,8 @@ import routes from './route/routes';
     RouterModule.forRoot(routes),
     CategoryModule,
     CartModule,
-    BookdetailsModule
+    BookdetailsModule,
+    CheckoutModule
   ], 
   providers: [],
   bootstrap: [AppComponent]
