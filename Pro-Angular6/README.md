@@ -171,6 +171,8 @@ The routing for the admin module is also setup in the `admin.module` file using 
 __Configure the URL Routing System__   
 Dynamically loaded modules are managed through the routing configuration, which triggers the loading process when the application navigated to a specified URL.    
 
+[The JWT Specification](https://tools.ietf.org/html/rfc7519)
+
 ### Chapter 11: Creating an Angular Project  
 To create a new Angular project  
 `$ ng new example-app`  

@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { LoginModule } from './login/login.module';
-import { AdminModule } from './admin/admin.module';
+import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { NotFoundModule } from './not-found/not-found.module';
 
@@ -13,9 +13,9 @@ import { NotFoundModule } from './not-found/not-found.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HomeModule,
     AppRoutingModule,
-    AdminModule,
-    LoginModule,
     NotFoundModule
   ],
   providers: [],
