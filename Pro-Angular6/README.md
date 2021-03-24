@@ -190,7 +190,17 @@ This command will:
 * update index.html to include the `manifest.json` and address non supporting browsers  
 * update `app.module` to add `ServiceWorkerModule` module to it's `imports` array.
 
-See [Angular PWA Guide](https://angular.io/guide/service-worker-intro)
+See [Angular PWA Guide](https://angular.io/guide/service-worker-intro)  
+
+__Building and Testing the Application__  
+To build the application for production  
+```
+$ ng build --prod
+```  
+The build is make use of the production environment file `src/environments/environment.prod.ts`
+
+__Server Side Rendering (SSR)__  
+Angular supports SSR with it's Angular Universal technology. See the [Angular Guide](https://angular.io/guide/universal)  
 
 ### Chapter 11: Creating an Angular Project  
 To create a new Angular project  

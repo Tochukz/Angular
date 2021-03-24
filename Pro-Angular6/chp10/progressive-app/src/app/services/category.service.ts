@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap} from 'rxjs/operators';
 
 import { Category } from './../models/category'; 
+import { environment as env } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class CategoryService {
   constructor(private httpClient: HttpClient) { }
 
   fetchCategories(): Observable<Category[]> {
-    const url = 'http://ojlinks-api.test:8084/api/categories';
+    const url = `${env.APIBaseUrl}/categories`;
     return this.httpClient
                .get<Category[]>(url)
                .pipe(

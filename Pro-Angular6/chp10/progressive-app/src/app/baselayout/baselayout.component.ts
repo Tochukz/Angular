@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BaselayoutComponent implements OnInit {
 
-  private internetConnected: Boolean;
+  public internetConnected: Boolean;
 
   constructor(connectionService: ConnectionService) { 
     this.internetConnected = window.navigator.onLine;
