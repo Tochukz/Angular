@@ -173,6 +173,14 @@ Dynamically loaded modules are managed through the routing configuration, which 
 
 [The JWT Specification](https://tools.ietf.org/html/rfc7519)
 
+### Chapter 10: SportsStore: Progressive Feature and Deployment
+__Installing the PWA Package__  
+The Angular team provides an NPM package that can be used to bring PWA feature to Angular projects. Use the Angular CLI to install the Angular PWA package  
+```
+$ ng add @angular/pwa
+```  
+The `ng add` command is used specifically to install packages, such as `@angular/pwa`, that have been designed to enhance or configure an Angular project.  
+
 ### Chapter 11: Creating an Angular Project  
 To create a new Angular project  
 `$ ng new example-app`  
