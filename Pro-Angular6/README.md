@@ -175,11 +175,20 @@ Dynamically loaded modules are managed through the routing configuration, which 
 
 ### Chapter 10: SportsStore: Progressive Feature and Deployment
 __Installing the PWA Package__  
-The Angular team provides an NPM package that can be used to bring PWA feature to Angular projects. Use the Angular CLI to install the Angular PWA package  
+The Angular team provides an NPM package that can be used to bring PWA feature to an Angular project. Use the Angular CLI to install the Angular PWA package  
 ```
-$ ng add @angular/pwa
+$ ng add @angular/pwa@0.8.9
 ```  
-The `ng add` command is used specifically to install packages, such as `@angular/pwa`, that have been designed to enhance or configure an Angular project.  
+The `ng add` command is used specifically to install packages, such as `@angular/pwa`, that have been designed to enhance or configure an Angular project.   
+The version `0.8.9` is the version that supports Angular 6. Make sure to use the version that supports your Angular Version. See it's [version list](https://www.npmjs.com/package/@angular/pwa) on npmjs.com.  
+This command will:
+* install the `@angular/pwa` NPM package
+* install a compatible version of `@angular/service-worker` package
+* generate `manifest.json` file
+* generate icons of different sizes which are referenced in the manifest file. See `src/assets/icons`.
+* generate `ngsw-config.json` file
+* update index.html to include the `manifest.json` and address non supporting browsers  
+* update `app.module` to add `ServiceWorkerModule` module to it's `imports` array.
 
 ### Chapter 11: Creating an Angular Project  
 To create a new Angular project  
