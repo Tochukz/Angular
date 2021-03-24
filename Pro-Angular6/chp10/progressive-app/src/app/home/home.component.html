@@ -1,0 +1,12 @@
+<app-baselayout>
+  <div class="mt-4">
+    <h3 class="text-center text-primary">
+      {{ activeCategory.name }}
+    </h3>
+    <div *ngFor="let subcategory of activeCategory.subcategories" class="list-group">
+      <span class="list-group-item list-group-item-action">
+        {{ subcategory.name }}
+      </span>
+    </div>
+  </div>
+</app-baselayout>

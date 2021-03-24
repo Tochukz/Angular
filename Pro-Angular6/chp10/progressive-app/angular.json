@@ -47,6 +47,8 @@
               "src/manifest.json"
             ],
             "styles": [
+              "src/css/bootstrap.4-3-1.min.css",
+              "src/css/font-awesome.4-7-0.min.css",
               "src/styles.scss"
             ],
             "scripts": []

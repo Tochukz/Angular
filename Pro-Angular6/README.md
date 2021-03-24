@@ -190,6 +190,8 @@ This command will:
 * update index.html to include the `manifest.json` and address non supporting browsers  
 * update `app.module` to add `ServiceWorkerModule` module to it's `imports` array.
 
+See [Angular PWA Guide](https://angular.io/guide/service-worker-intro)
+
 ### Chapter 11: Creating an Angular Project  
 To create a new Angular project  
 `$ ng new example-app`  
