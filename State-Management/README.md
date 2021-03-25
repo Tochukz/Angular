@@ -9,7 +9,7 @@ For projects using Angular CLI 6+, you can also install using `ng`
 ```
 $ ng add @ngrx/store@latest
 ```  
-If you are using an older Angular CLI version say 6.0 for example, you must install a compatible version of the store  
+If your Angular App is an older version say Angular v6 for example, you must install a compatible version of the store  
 ```
 $ ng add @ngrx/store@6.1.2
 ```  
@@ -18,4 +18,4 @@ This will
 * Update `AppModule`'s `imports` to include the `StoreModule`  
 * Generate `src/app/reducers` directory with a single reducer, `index.ts`
 
-See [ngrx installation](https://ngrx.io/guide/store/install) for other flag options for `ng add @ngrx/store` command
+See [ngrx installation](https://ngrx.io/guide/store/install) for other flag options for the `ng add @ngrx/store` command
