@@ -9,7 +9,7 @@ For projects using Angular CLI 6+, you can also install using `ng`
 ```
 $ ng add @ngrx/store@latest
 ```  
-Since I am using Angular CLI 6.0, I will install a compatible version of the store  
+If you are using an older Angular CLI version say 6.0 for example, you must install a compatible version of the store  
 ```
 $ ng add @ngrx/store@6.1.2
 ```  

@@ -1,12 +1,10 @@
-import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
-import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -16,8 +14,7 @@ import { reducers, metaReducers } from './reducers';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    HomeModule,
-    StoreModule.forRoot(reducers, { metaReducers })
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
