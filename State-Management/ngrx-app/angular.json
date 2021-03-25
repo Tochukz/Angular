@@ -46,6 +46,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/css/bootstrap.4-3-1.min.css",
               "src/styles.scss"
             ],
             "scripts": []
