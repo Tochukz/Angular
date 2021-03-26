@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-4 offset-sm-4">
+    <form class="center-div" (ngSubmit)="submit()">
+    <h3>Login</h3>
+    <div class="form-group">
+        <input type="text" class="form-control" name="username" [(ngModel)]="username"  placeholder="Username" />
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Password" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="form-control btn btn-primary" />
+    </div>
+    </form>
+  </div>
+</div>
+

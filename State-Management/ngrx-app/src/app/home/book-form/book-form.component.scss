@@ -1,0 +1,7 @@
+.book-form {
+  border: solid rgb(182, 176, 176) 1px;
+  padding: 1em;
+  .ng-invalid.submitted {
+    border: solid red 1px;
+  }
+}

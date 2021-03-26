@@ -19,3 +19,17 @@ This will
 * Generate `src/app/reducers` directory with a single reducer, `index.ts`
 
 See [ngrx installation](https://ngrx.io/guide/store/install) for other flag options for the `ng add @ngrx/store` command
+
+For documentation on older version see [ngrx v7 Docs](https://v7.ngrx.io/guide/store)
+
+__Install Dev Tool__   
+Install using `npm`
+```
+$ npm install @ngrx/store-devtools
+```
+Install using `ng` for Angualar CLI 6+   
+```
+ng add @ngrx/store-devtools@latest
+```
+
+See [store-devtools install](https://ngrx.io/guide/store-devtools/install) for more options

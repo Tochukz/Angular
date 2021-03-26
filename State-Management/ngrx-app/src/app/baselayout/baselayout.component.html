@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" routerLink="/">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+      </li>   
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/contactus" routerLinkActive="active">Contact Us</a>
+      </li>  
+    </ul>   
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-secondary my-2 my-sm-0" type="button" routerLink="/login">Logout</button>
+    </form> 
+  </div>
+</nav>
+<div class="container-fluid">
+  <ng-content></ng-content>
+</div>
+  
