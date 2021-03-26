@@ -31,5 +31,6 @@ Install using `ng` for Angualar CLI 6+
 ```
 ng add @ngrx/store-devtools@latest
 ```
+This will install the `@ngrx/store-devtools` package and add the `StoreDevtoolsModule` to the `imports` array of `AppModule`.
 
-See [store-devtools install](https://ngrx.io/guide/store-devtools/install) for more options
+See [store-devtools install](https://ngrx.io/guide/store-devtools/install) for more installation options flags.

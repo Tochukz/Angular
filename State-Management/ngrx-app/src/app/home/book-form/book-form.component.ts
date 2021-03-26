@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import { Book } from './../../models/book';
-import { addBook } from './../../actions/book.actions';
+import { addBook, updatedBook } from './../../actions/book.actions';
 
 @Component({
   selector: 'app-book-form',
@@ -16,19 +16,32 @@ export class BookFormComponent implements OnInit {
 
   submitted = false;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) { 
+    store.pipe().subscribe(st => {
+      const book = st['book']['bookToEdit'];
+      if (book) {
+        this.book = {...book};
+      }
+    });
+  }
 
   ngOnInit(): void {
   }
 
-  submitBook(ngForm: NgForm) {
-    console.log('form', ngForm);
+  submitBook(ngForm: NgForm) {    
     this.submitted = true;
-    
+
     if (ngForm.invalid) {      
       return false;
     }
-    console.log({book: this.book});
-    this.store.dispatch(addBook(this.book));
+  
+    if (this.book.bookId) {
+      this.store.dispatch(updatedBook(this.book));      
+    } else {
+      this.store.dispatch(addBook(this.book));      
+    }   
+
+    this.book =  new Book('', '');
+    this.submitted = false;
   }
 }

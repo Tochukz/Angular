@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
+import { removeBook, editBook  } from './../../actions/book.actions';
 import { Book } from './../../models/book';
 
 @Component({
@@ -13,23 +14,23 @@ export class BookListComponent implements OnInit {
 
   books: Book[];
 
-  constructor(private store: Store<{books: Book[], bookToEdit: Book}>) { 
-    console.log('store', store);
-  
-    store.select('books').subscribe(books => {
-      console.log('books', books);
-      this.books = books;
+  constructor(private store: Store) { 
+    store.pipe().subscribe(str => {      
+      this.books = str['book']['books'];
     });
   }
 
   ngOnInit(): void {
   }
 
-  editBook(bookId) {
-    console.log('type', typeof bookId)
+  editBook(bookId) {   
+    const book = this.books.find(bk => bk.bookId == bookId);
+    if (book) {
+      this.store.dispatch(editBook(book))
+    }    
   }
 
   deleteBook(bookId) {
-    console.log('type', typeof bookId)
+    this.store.dispatch(removeBook({ bookId }));
   }
 }
