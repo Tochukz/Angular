@@ -1,0 +1,19 @@
+<app-baselayout>
+  <div class="row">
+    <div class="col-sm-12 mt-2 mb-2">
+    <h3 class="text-center">Category Page </h3>
+    </div>
+    <div *ngFor="let category of categories" class="col-sm-3">
+      <div  class="card text-white bg-primary mb-3" >
+        <div class="card-header">{{ category.name }}</div>
+        <div class="card-body">
+          <span *ngFor="let subcategory of category.subcategories" class="badge badge-pill badge-dark">
+            {{ subcategory.name }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-baselayout>
+  
+  

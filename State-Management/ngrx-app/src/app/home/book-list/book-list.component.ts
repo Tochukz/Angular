@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { removeBook, editBook  } from './../../actions/book.actions';
+import { removeBook, editBook  } from '../../store/actions/book.actions';
 import { Book } from './../../models/book';
 
 @Component({

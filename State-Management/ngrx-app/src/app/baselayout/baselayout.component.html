@@ -9,11 +9,14 @@
         <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
       </li>   
       <li class="nav-item active">
+        <a class="nav-link" routerLink="/category" routerLinkActive="active">Category</a>
+      </li>  
+      <li class="nav-item active">
         <a class="nav-link" routerLink="/contactus" routerLinkActive="active">Contact Us</a>
       </li>  
     </ul>   
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-secondary my-2 my-sm-0" type="button" routerLink="/login">Logout</button>
+      <button class="btn btn-secondary my-2 my-sm-0" type="button" (click)="logout()">Logout</button>
     </form> 
   </div>
 </nav>

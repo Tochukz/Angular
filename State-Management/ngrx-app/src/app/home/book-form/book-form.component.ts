@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import { Book } from './../../models/book';
-import { addBook, updatedBook } from './../../actions/book.actions';
+import { addBook, updatedBook } from '../../store/actions/book.actions';
 
 @Component({
   selector: 'app-book-form',

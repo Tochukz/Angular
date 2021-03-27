@@ -1,7 +1,7 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
-import { addBook, removeBook, editBook, updatedBook } from './../actions/book.actions';
-import { Book } from '../models/book';
+import { addBook, removeBook, editBook, updatedBook } from '../actions/book.actions';
+import { Book } from '../../models/book';
 
 
 export interface State {

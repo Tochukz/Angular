@@ -9,7 +9,7 @@ import { HomeComponent } from './home.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { BookListComponent } from './book-list/book-list.component';
 
-import { bookReducerKey, bookReducer } from './../reducers/book.reducer';
+import { bookReducerKey, bookReducer } from '../store/reducers/book.reducer';
 
 @NgModule({
   declarations: [HomeComponent, BookFormComponent, BookListComponent],
@@ -17,7 +17,7 @@ import { bookReducerKey, bookReducer } from './../reducers/book.reducer';
     CommonModule,
     BaselayoutModule,
     FormsModule,
-    StoreModule.forFeature(bookReducerKey, bookReducer),
+    StoreModule.forFeature(bookReducerKey, bookReducer),    
     CounterModule
   ],
   exports: [HomeComponent],
