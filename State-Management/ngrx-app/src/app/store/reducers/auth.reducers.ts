@@ -1,6 +1,6 @@
 import { createReducer, on, Action } from '@ngrx/store';
-
-import { authSuccessAction, authFailureAction } from './../actions/login-page.actions';
+import { HttpErrorResponse } from '@angular/common/http';
+import { authSuccessAction, authFailureAction, resetAuthToken } from './../actions/login-page.actions';
 
 export interface State {
  authenticated: boolean;
@@ -26,12 +26,21 @@ const reducer = createReducer(
       errorMsg: '',
     };
   }),
-  on(authFailureAction, (state, data) => {
+  on(authFailureAction, (state, error) => {
+    const err = error as HttpErrorResponse;
+    const errorMsg = err.error ? err.error.message : err.message;
     return {
       ...state,
       authenticated: false,
-      errorMsg: data.message
+      errorMsg,
     };
+  }),
+  on(resetAuthToken, state => {
+    return {
+      ...state,
+      authenticated: false,
+      token: '',      
+    }
   })
 );
 

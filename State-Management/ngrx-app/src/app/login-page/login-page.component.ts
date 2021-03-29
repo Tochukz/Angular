@@ -18,33 +18,19 @@ export class LoginPageComponent implements OnInit {
 
   activityMsg = '';
 
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store<{auth: object}>, private router: Router) { }
 
   ngOnInit(): void {
-    this.store.subscribe(store => {
-     
-      const auth = store['auth'];
-
-      console.log('store', store, (auth && auth['authenticated']));
-      if (auth && auth['authenticated']) {
+    this.store.select('auth').subscribe(auth => {
+      if (auth['authenticated']) {
         this.activityMsg = '';
-        this.errorMsg = '';
-  
-        this.updateStorage(auth);
-
+        this.errorMsg = '';        
         this.router.navigateByUrl('/');
-      } else if (auth && !auth['authenticated']) {
+      } else if (auth['errorMsg']) {
         this.errorMsg = auth['errorMsg'];
+        this.activityMsg = '';
       }
     })
-  }
-
-  updateStorage(auth) {
-    const localStore = localStorage.getItem('store') || '{}';
-    const store = JSON.parse(localStore);
-    const updatedStore = Object.assign(store, auth);
-    console.log('updting to', store, 'suing', updatedStore);
-    localStorage.setItem('store', JSON.stringify(updatedStore));
   }
 
   submit() { 

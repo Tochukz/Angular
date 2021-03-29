@@ -16,7 +16,10 @@ export class AuthEffect {
               .pipe(
                 tap(_ => console.log('authEffect auth response')),
                 map(loginResponse => authSuccessAction(loginResponse)),
-                catchError(error => of(authFailureAction(error)))
+                catchError(error => {                   
+                  console.error(error);
+                  return of(authFailureAction(error))
+                })
               )
      )
     ))
