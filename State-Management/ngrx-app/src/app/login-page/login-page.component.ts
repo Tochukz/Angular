@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
   constructor(private store: Store<{auth: object}>, private router: Router) { }
 
   ngOnInit(): void {
-    this.store.select('auth').subscribe(auth => {
+    this.store.select('auth').subscribe(auth => {      
       if (auth['authenticated']) {
         this.activityMsg = '';
         this.errorMsg = '';        

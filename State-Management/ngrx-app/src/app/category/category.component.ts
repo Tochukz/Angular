@@ -1,8 +1,10 @@
 
+
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { Category } from './../models/category';
-import { CategoryService } from './../services/category.service';
+import { fetchCategoriesAction } from './../store/actions/category.actions';
 
 @Component({
   selector: 'app-category',
@@ -12,12 +14,19 @@ import { CategoryService } from './../services/category.service';
 export class CategoryComponent implements OnInit {
   categories: Category[] = [];
 
-  constructor(private categoryService: CategoryService) { }
+  errorMsg = '';
 
-  ngOnInit(): void {
-    this.categoryService.fetchCategories().subscribe(categories => {
-      this.categories = categories;
+  constructor(private store: Store<{category: Category[]}>) {
+    store.select('category').subscribe(category => {          
+      if (Array.isArray(category['categories']) && category['categories'].length > 0) {
+        this.categories = category['categories'];
+      } else if(category['errorMsg']) {
+        this.errorMsg = category['errorMsg'];
+      }
     });
   }
 
+  ngOnInit(): void {
+    this.store.dispatch(fetchCategoriesAction());
+  }
 }

@@ -28,7 +28,7 @@ const reducer = createReducer(
   }),
   on(authFailureAction, (state, error) => {
     const err = error as HttpErrorResponse;
-    const errorMsg = err.error ? err.error.message : err.message;
+    const errorMsg = err.error && err.error.message || err.message;
     return {
       ...state,
       authenticated: false,
@@ -46,5 +46,5 @@ const reducer = createReducer(
 
 export function authReducer(state: State | undefined, action: Action) {
   return reducer(state, action);
-}
+};
 
