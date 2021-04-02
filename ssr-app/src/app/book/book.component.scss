@@ -1,0 +1,21 @@
+.book {
+    width: 12.5em;
+    border: solid silver 1px;
+    overflow: hidden;
+    margin: 0.5em;
+    background: silver;
+    padding-bottom: 0.5em;
+}
+.book .img-div {
+    text-align: center;
+}
+.book .img-div img {
+    height: 15em;
+    width: auto;
+}
+.book p {
+    text-align: center;
+    font-size: 12px;
+    white-space: nowrap;
+    margin: 0;
+}

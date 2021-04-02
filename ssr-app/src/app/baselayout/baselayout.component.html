@@ -1,0 +1,37 @@
+
+<div class="row bg-primary top-nav">
+    <div class="col-sm-2">
+      <a class="navbar-brand text-white" routerLink="/">
+        OJLinks BookStore
+      </a>
+    </div>
+    <div class="col-sm-6">
+      <form class="mt-2">
+        <div class="form-group">     
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">           
+            </div>
+          </div>
+        </div>
+      </form>
+    </div> 
+    <div class="col-sm-4">
+      <div class="mt-2 text-right mr-2">
+        <a  class="btn btn-success text-white" routerLink="/contactus">Contact Us</a>
+        &nbsp;    
+      </div>      
+    </div>
+  </div>
+  <div class="row" style="margin-top: 2em;">
+    <div class="col-sm-2">
+      <app-navigation></app-navigation>
+    </div>    
+    <div class="col-sm-8">   
+      <ng-content></ng-content>
+    </div>
+  </div>
+  

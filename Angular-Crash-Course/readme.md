@@ -3,7 +3,7 @@ __Observables__
 Observables are included with RxJS which is reactive extension...   
 When we use a service and we make a HTTP request to an API we usually return an observable to the component and subscribe to that observable.
 
-__Angular CLI Opeations__
+__Angular CLI Operations__
 Create new Angular application  
 `$ ng new myapp`    
 Run the development server  

@@ -53,7 +53,7 @@ There are two ways to create forms in Angular:
 * Template Driven Forms  
 * Reactive Forms (Also called Model Driven Forms)  
 
-We use to classes to create the form control tree  
+We use classes to create the form control tree  
 * _FormGroup_
 * _FormControl_  
 

@@ -26,8 +26,9 @@ and it will modify
 * `src/app/app.module.ts` 
 
 and new commands will be added to `package.json` scripts to run the server.  
+To see a snap shot of the diff, take a look at the commit [38160a8](https://github.com/Tochukz/Angular/commit/38160a8cef2ffeb13ed5463713d8ec12ed82a371)
 
-To start rendering your app with Universal, you can ru the command 
+To start rendering your app with Universal, you can run the command 
 ```
 > npm run dev:ssr
 ```

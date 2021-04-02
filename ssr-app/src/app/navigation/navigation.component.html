@@ -1,0 +1,13 @@
+<div class="mt-4 ml-4">
+    <ul class="list-group">
+        <a *ngFor="let category of categories"  
+            routerLink="/category/{{category.categoryId}}"
+            [class.active]="isActiveCategory(category.categoryId)"
+            class="list-group-item d-flex justify-content-between align-items-center">
+        {{ category.name }}
+        <span class="badge badge-primary badge-pill">
+            {{ category.subcategories.length}}
+        </span>
+        </a>
+    </ul>
+</div>

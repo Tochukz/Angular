@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run ssr-app:serve-ssr",
+    "dev:ssr": "ng run ssr-app:serve-ssr --port 5000",
     "serve:ssr": "node dist/ssr-app/server/main.js",
     "build:ssr": "ng build --prod && ng run ssr-app:server:production",
     "prerender": "ng run ssr-app:prerender"

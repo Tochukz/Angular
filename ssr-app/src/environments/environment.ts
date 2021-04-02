@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  bearerToken: 'eyJ0eXAi.eyJpc3MiOiJodHRwc.Xr4RyLS8peO_1S9',
+  APIBaseUrl: 'http://ojlinks-api.test:8084/api',
 };
 
 /*
