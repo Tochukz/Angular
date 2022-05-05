@@ -4,15 +4,15 @@ Install Angular CLI 6 or later
 `$ npm install -g @angular/cli` (If installing first time)  
 `$ npm install -g @angular/cli@latest`  (To update)
 
-See what files Angular project will create without actually creating them:
+See what files Angular project will create without actually creating them  
 `$ ng new MyApp -d`
 
 Spec files are used for Unit Testing.  
-To skip the generation of spec files do:
+To skip the generation of spec files do  
 `ng new MyApp --skip-tests`
 
-To start he development server:
-`$ ng serve --open`
+To start he development server  
+`$ ng serve --open`  
 Using the shortcut  
 `$ ng s -o`  
 --open and -o will make the application open automatically in the browser.
